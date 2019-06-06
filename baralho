@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <termios.h>
+#include <unistd.h>
+#include <time.h>
+
+struct baralho {
+    int num;
+    struct baralho *proximo;
+};
+typedef struct baralho sbaralho;
+
+sbaralho *primeira=NULL;
+
+void adiciona_final(){
+    sbaralho *final, *aux;
+    final=(sbaralho *) malloc(sizeof(sbaralho));
+    aux=primeira;
+    int i;
+    scanf("%i", &i);
+    final->num=i;
+    final->proximo=NULL;
+    if(aux==NULL){
+        primeira=final;
+    }
+    else{
+        aux=primeira;
+        while(aux->proximo!=NULL){
+            aux=aux->proximo;
+        }
+        aux->proximo=final;
+    }
+}
+
+sbaralho *adiciona_inicio(){
+	sbaralho *inicio, *aux;
+	inicio=(sbaralho *) malloc(sizeof(sbaralho));
+	int i;
+	scanf("%i", &i);
+	inicio->num=i;
+	inicio->proximo=primeira;
+	return inicio;	
+}
+
+void imprime_lista(){
+    sbaralho *aux;
+	char c;
+    aux=primeira;
+    if(aux->proximo==NULL) printf("%i\n", aux->num);
+    while(aux!=NULL){
+        printf("%i\n", aux->num);
+        aux=aux->proximo;
+
+    }
+	getchar();
+}
+
+int main() {
+
+    int i;
+
+    while(1){
+        printf("1)Adicionar final\n2) Adicionar inicio\n3)Imprimir\nOpcao: ");
+        scanf("%i", &i);
+
+        if(i==1){
+			adiciona_final();
+			system("clear");
+		}
+		else if(i==2){
+			primeira=adiciona_inicio();
+			system("clear");
+		}
+        else if(i==3){
+			imprime_lista();
+			sleep(10);
+			system("clear");
+		}
+        else if(i==0) break;
+    }
+
+    return 0;
+}
