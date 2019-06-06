@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int main() {
+ 
+    int m=0, n=0, cond=0, i, j;
+    while(m<1 || m>10){
+        scanf("%i", &m);
+    }
+    while(n<1 || n>10){
+        scanf("%i", &n);
+    }
+    
+    int mat[m][n];
+    
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            scanf("%i", &mat[i][j]);
+        }
+    }
+ 
+    for(i=0;i<m;i++){
+        printf("linha %i: ", i+1);
+        for(j=0;j<n;j++){
+            if(j!=n-1){
+                printf("%i,", mat[i][j]);
+            }
+            else printf("%i\n", mat[i][j]);
+        }    
+    }    
+    return 0;
+}
