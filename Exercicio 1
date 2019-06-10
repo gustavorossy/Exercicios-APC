@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct numeros{
+    float num;
+    float den;
+};
+typedef struct numeros numeros;
+
+void compara(int sequencia, int teste){
+    numeros fracoes[sequencia];
+    int i, j, check=0;
+    char c[5];
+    for(i=0;i<sequencia;i++){
+        scanf("%s", c);
+        fracoes[i].num=c[0]-'0'; //transforma valores(1 a 9) de char para int
+        fracoes[i].den=c[2]-'0'; //transforma valores(1 a 9) de char para int
+    }
+    printf("Caso de teste %i\n", teste+1);
+    check=0;
+    for(i=0;i<sequencia;i++){
+        for(j=0;j<sequencia;j++){
+            printf("i[%i]: %.0f/%.0f\n", i, fracoes[i].num, fracoes[i].den);
+            printf("j[%i]: %.0f/%.0f\n", j, fracoes[j].num, fracoes[j].den);
+            printf("%f\n", fracoes[i].num/fracoes[i].den);
+            printf("%f\n", fracoes[j].num/fracoes[j].den);
+            if(i!=j && fracoes[i].num/fracoes[i].den == fracoes[j].num/fracoes[j].den){
+                printf("%.0f\n", fracoes[j].den/fracoes[i].den);
+                printf("%.0f/%.0f equivalente a %.0f/%.0f\n", fracoes[i].num, fracoes[i].den, fracoes[j].num, fracoes[j].den);
+                check++;
+            }
+        }
+    }
+    if(check==0) printf("Nao ha fracoes equivalentes na sequencia\n");*/
+    for(i=0;i<sequencia;i++){
+        printf("fracao %i: %.0f/%.0f\n", i, fracoes[i].num, fracoes[i].den);
+    }
+}
+
+int main(int argc, char const *argv[]) {
+    int testes, sequencia, i=0;
+    scanf("%i", &testes);
+    for(i=0;i<testes;i++){
+        scanf("%i", &sequencia);
+        compara(sequencia, i);
+    }
+    return 0;
+}
