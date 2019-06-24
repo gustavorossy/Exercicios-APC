@@ -111,7 +111,7 @@ int getch(void){
     tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
     return ch;
 }
-
+ 
 void introducao(){
     int i;
     printf("Olá... como você veio parar aqui?\n");
